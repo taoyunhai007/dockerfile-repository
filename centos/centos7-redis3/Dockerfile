@@ -11,3 +11,7 @@ RUN mkdir /usr/local/downloads/ \
 && make && make install \
 && yum -y remove wget \
 && yum -y clean all
+# expose default port
+EXPOSE 6379
+# entry point
+ENTRYPOINT ["/usr/local/software/redis-3.2.11/src/redis-server","--protected-mode no"]
