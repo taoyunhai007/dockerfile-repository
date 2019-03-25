@@ -1,5 +1,7 @@
 FROM taojintianxia/centos7
-LABEL maintainer="taotietianxia@gmail.com"
+
+MAINTAINER Nianjun Sun "kane.sun@outlook.com"
+
 # install software
 RUN mkdir /usr/local/downloads/ \
 && mkdir /usr/local/software/ \

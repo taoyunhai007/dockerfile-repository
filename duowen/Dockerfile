@@ -1,6 +1,6 @@
 FROM taojintianxia/centos7-maven:latest
 
-LABEL maintainer "sunnianjun"
+MAINTAINER Nianjun Sun "kane.sun@outlook.com"
 
 ENV LIB_PATH /opt
 

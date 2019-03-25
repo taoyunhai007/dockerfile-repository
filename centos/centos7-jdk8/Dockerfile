@@ -1,6 +1,7 @@
 FROM taojintianxia/centos7
-LABEL maintainer="taotietianxia@gmail.com"
-# install software
+
+MAINTAINER Nianjun Sun "kane.sun@outlook.com"# install software
+
 RUN yum install -y wget \
 && mkdir /usr/local/downloads/ \
 && mkdir /usr/local/software/ \

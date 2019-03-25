@@ -1,4 +1,4 @@
-FROM centos7-docker:latest
+FROM taojintianxia/alpine:3.9
 
 MAINTAINER Nianjun Sun "kane.sun@outlook.com"
 
@@ -20,4 +20,3 @@ RUN yum install wget -y &&\
 ## set the jdk environemtn
 ENV JAVA_HOME ${LIB_PATH}/jdk
 ENV PATH ${PATH}:${JAVA_HOME}/bin
-
