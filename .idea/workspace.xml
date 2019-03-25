@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="187f3de6-698e-43c4-94d8-a01679d8e12b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/centos/centos7-jdk/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/centos/centos7-jdk/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/centos/centos7-jdk8/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/centos/centos7-jdk8/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/centos/centos7-maven/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/centos/centos7-maven/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/centos/centos7-redis3/sentinel mode/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/centos/centos7-redis3/sentinel mode/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/centos/centos7-redis3/single mode/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/centos/centos7-redis3/single mode/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/duowen/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/duowen/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sharding-sphere/proxy/master-slave/conf/config-master_slave.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/sharding-sphere/proxy/master-slave/conf/config-master_slave.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpine/jdk8/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/alpine/jdk8/Dockerfile" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -85,8 +78,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/alpine/jdk8/Dockerfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="29" selection-start-column="29" selection-end-column="29" />
+            <state relative-caret-position="160">
+              <caret line="8" column="27" lean-forward="true" selection-start-column="1" selection-end-line="22" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -322,8 +315,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/alpine/jdk8/Dockerfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="29" selection-start-column="29" selection-end-column="29" />
+        <state relative-caret-position="160">
+          <caret line="8" column="27" lean-forward="true" selection-start-column="1" selection-end-line="22" selection-end-column="34" />
         </state>
       </provider>
     </entry>
