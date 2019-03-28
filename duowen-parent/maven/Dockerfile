@@ -1,7 +1,7 @@
-FROM taojintianxia/centos7-maven:latest
+FROM zenika/alpine-maven:3-jdk8
 
 MAINTAINER Nianjun Sun "kane.sun@outlook.com"
 
-RUN mkdir /opt/duowen
+RUN mkdir -p /opt/duowen
 
 WORKDIR /opt/duowen
