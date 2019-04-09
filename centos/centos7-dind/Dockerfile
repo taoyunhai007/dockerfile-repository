@@ -1,13 +1,13 @@
-FROM centos:7
+FROM taojintianxia/centos7-systemd
 
 MAINTAINER Nianjun Sun "kane.sun@outlook.com"
 
-RUN yum install -y docker
-
-COPY daemon.json /etc/docker/daemon.json
+RUN yum install -y docker && \
+    yum clean all && \
+    systemctl daemon-reload && \
+    systemctl restart docker.service
 
 EXPOSE 2375/tcp
 
-CMD /usr/sbin/init
+CMD ["/usr/sbin/init"]
 
-// TODO this does not work now
