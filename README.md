@@ -4,4 +4,5 @@
 
 ### this repository contains following type of image :
  - 1. base image : usually import as a base image, such as a centos with JDK
- - 2. alpine : choose alpine as base image, this kind of image will be very tiny
+ - 2. alpine image : choose alpine as base image, this kind of image will be very tiny
+ - 3. example image : usually contains a springboot demo or something like that, for testing or demo
