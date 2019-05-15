@@ -1,7 +1,3 @@
 # dockerfile-repository
 
-the usage of docker build :  
-
-```
-docker build -t taojntianixa/apline:v1 . 
-```
+### this repository is a collection of my common base docker file repository
