@@ -1,2 +1,2 @@
-docker run --name mysql-master -v `pwd`/config/master/my.cnf:/etc/my.cnf -v `pwd`/sql/master-grant.sql:/docker-entrypoint-initdb.d/master-grant.sql -e MYSQL_ALLOW_EMPTY_PASSWORD=yes -p13306:3306 -d mysql:5.7 &&
-docker run --name mysql-slave-1 -v `pwd`/config/slave-1/my.cnf:/etc/my.cnf -v `pwd`/sql/slave-grant.sql:/docker-entrypoint-initdb.d/slave-grant.sql -e MYSQL_ALLOW_EMPTY_PASSWORD=yes -p13306:3306 --link mysql-master:mysql-master -d mysql:5.7 &&
+docker run --name mysql-master -v `pwd`/config/master/my.cnf:/etc/my.cnf -v `pwd`/sql/master-grant.sql:/docker-entrypoint-initdb.d/master-grant.sql -e TZ=Asia/Shanghai -e MYSQL_ALLOW_EMPTY_PASSWORD=yes -p13306:3306 -d mysql:5.7 &&
+docker run --name mysql-slave-1 -v `pwd`/config/slave-1/my.cnf:/etc/my.cnf -v `pwd`/sql/slave-grant.sql:/docker-entrypoint-initdb.d/slave-grant.sql -e TZ=Asia/Shanghai -e MYSQL_ALLOW_EMPTY_PASSWORD=yes -p13306:3306 --link mysql-master:mysql-master -d mysql:5.7
