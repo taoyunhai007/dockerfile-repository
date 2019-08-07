@@ -2,7 +2,7 @@ version: '3'
 services:
   mysql-master:
     ## mysql version, you could get more tags at here : https://hub.docker.com/_/mysql?tab=tags
-    image: "mysql:5.7"
+    image: mysql:${TAG}
     ## host port is 3306, you could change to 33060 or any other port doesn't conflict MySQL on your OS
     ports:
      - "13306:3306"
@@ -17,6 +17,14 @@ services:
     volumes:
       - ./sql/manual_schema.sql:/docker-entrypoint-initdb.d/manual_schema.sql
       - ./sql/master-grant.sql:/docker-entrypoint-initdb.d/master-grant.sql
+    command: [
+      "pid-file=/var/run/mysqld/mysqld.pid",
+      "socket=/var/run/mysqld/mysqld.sock",
+      "datadir=/var/lib/mysql",
+      "log-bin=/var/log/mysql/mysql-bin.index",
+      "symbolic-links=0",
+      "server-id=${MASTER_SERVER_ID}"
+    ]
 
   mysql-slave1:
     depends_on:
@@ -37,3 +45,11 @@ services:
     volumes:
       - ./sql/manual_schema.sql:/docker-entrypoint-initdb.d/manual_schema.sql
       - ./sql/slave-change.sql:/docker-entrypoint-initdb.d/slave-change.sql
+    command: [
+      "pid-file=/var/run/mysqld/mysqld.pid",
+      "socket=/var/run/mysqld/mysqld.sock",
+      "datadir=/var/lib/mysql",
+      "log-bin=/var/log/mysql/mysql-bin.index",
+      "symbolic-links=0",
+      "server-id=${SLAVE_SERVER_1_ID}"
+    ]
