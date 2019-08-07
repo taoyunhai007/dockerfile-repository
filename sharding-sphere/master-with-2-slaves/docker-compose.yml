@@ -1,0 +1,37 @@
+version: '3'
+services:
+  mysql-master:
+    ## mysql version, you could get more tags at here : https://hub.docker.com/_/mysql?tab=tags
+    image: "mysql:5.7"
+    ## host port is 3306, you could change to 33060 or any other port doesn't conflict MySQL on your OS
+    ports:
+     - "13306:3306"
+    container_name: sharding-sphere-mysql-master
+    ## launch mysql with password root
+    ## you could access the mysql in container by following command :
+    ## docker exec -it sharding-sphere-mysql mysql -uroot -proot
+    environment:
+     - MYSQL_ROOT_PASSWORD=root
+    ## if you insist to use password in mysql, remove MYSQL_ALLOW_EMPTY_PASSWORD=yes and uncomment following args
+    #  - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - ./manual_schema.sql:/docker-entrypoint-initdb.d/manual_schema.sql
+
+  mysql-slave1:
+    depends_on:
+      - mysql-master
+    ## mysql version, you could get more tags at here : https://hub.docker.com/_/mysql?tab=tags
+    image: "mysql:5.7"
+    ## host port is 3306, you could change to 33060 or any other port doesn't conflict MySQL on your OS
+    ports:
+      - "13307:3306"
+    container_name: sharding-sphere-mysql-slave1
+    ## launch mysql with password root
+    ## you could access the mysql in container by following command :
+    ## docker exec -it sharding-sphere-mysql mysql -uroot -proot
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    ## if you insist to use password in mysql, remove MYSQL_ALLOW_EMPTY_PASSWORD=yes and uncomment following args
+    #  - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - ./manual_schema.sql:/docker-entrypoint-initdb.d/manual_schema.sql
