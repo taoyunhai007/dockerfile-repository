@@ -13,7 +13,7 @@ services:
     ## if you insist to use password in mysql, remove MYSQL_ALLOW_EMPTY_PASSWORD=yes and uncomment following args
     #  - MYSQL_ROOT_PASSWORD=root
     environment:
-      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_ROOT_PASSWORD=${ROOT_USER_PASSWORD}
       - TZ=Asia/Shanghai
     volumes:
       - ./sql/manual_schema.sql:/docker-entrypoint-initdb.d/manual_schema.sql
@@ -43,7 +43,7 @@ services:
     #    #  - MYSQL_ROOT_PASSWORD=root_EMPTY_PASSWORD=yes and uncomment following args
     #  - MYSQL_ROOT_PASSWORD=root
     environment:
-      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_ROOT_PASSWORD=${ROOT_USER_PASSWORD}
       - TZ=Asia/Shanghai
     volumes:
       - ./sql/manual_schema.sql:/docker-entrypoint-initdb.d/manual_schema.sql
@@ -72,7 +72,7 @@ services:
     ## if you insist to use password in mysql, remove MYSQL_ALLOW_EMPTY_PASSWORD=yes and uncomment following args
     #  - MYSQL_ROOT_PASSWORD=root
     environment:
-      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_ROOT_PASSWORD=${ROOT_USER_PASSWORD}
       - TZ=Asia/Shanghai
     volumes:
       - ./sql/manual_schema.sql:/docker-entrypoint-initdb.d/manual_schema.sql
