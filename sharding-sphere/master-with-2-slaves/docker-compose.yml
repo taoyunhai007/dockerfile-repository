@@ -15,7 +15,8 @@ services:
     ## if you insist to use password in mysql, remove MYSQL_ALLOW_EMPTY_PASSWORD=yes and uncomment following args
     #  - MYSQL_ROOT_PASSWORD=root
     volumes:
-      - ./manual_schema.sql:/docker-entrypoint-initdb.d/manual_schema.sql
+      - sql/manual_schema.sql:/docker-entrypoint-initdb.d/manual_schema.sql
+      - sql/master-grant.sql:/docker-entrypoint-initdb.d/master-grant.sql
 
   mysql-slave1:
     depends_on:
@@ -34,4 +35,5 @@ services:
     ## if you insist to use password in mysql, remove MYSQL_ALLOW_EMPTY_PASSWORD=yes and uncomment following args
     #  - MYSQL_ROOT_PASSWORD=root
     volumes:
-      - ./manual_schema.sql:/docker-entrypoint-initdb.d/manual_schema.sql
+      - sql/manual_schema.sql:/docker-entrypoint-initdb.d/manual_schema.sql
+      - sql/slave-change.sql:/docker-entrypoint-initdb.d/slave-change.sql
