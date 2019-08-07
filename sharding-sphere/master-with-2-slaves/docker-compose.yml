@@ -5,16 +5,16 @@ services:
     image: mysql:${TAG}
     ## host port is 3306, you could change to 33060 or any other port doesn't conflict MySQL on your OS
     ports:
-     - "13306:3306"
+      - "13306:3306"
     container_name: sharding-sphere-mysql-master
     ## launch mysql with password root
     ## you could access the mysql in container by following command :
     ## docker exec -it sharding-sphere-mysql mysql -uroot -proot
-    environment:
-     - MYSQL_ROOT_PASSWORD=root
-     - TZ=Asia/Shanghai
     ## if you insist to use password in mysql, remove MYSQL_ALLOW_EMPTY_PASSWORD=yes and uncomment following args
     #  - MYSQL_ROOT_PASSWORD=root
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - TZ=Asia/Shanghai
     volumes:
       - ./sql/manual_schema.sql:/docker-entrypoint-initdb.d/manual_schema.sql
       - ./sql/master-grant.sql:/docker-entrypoint-initdb.d/master-grant.sql
@@ -39,11 +39,12 @@ services:
     ## launch mysql with password root
     ## you could access the mysql in container by following command :
     ## docker exec -it sharding-sphere-mysql mysql -uroot -proot
-    environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - TZ=Asia/Shanghai
     ## if you insist to use password in mysql, remove MYSQL_ALLOW_EMPTY_PASSWORD=yes and uncomment following args
+    #    #  - MYSQL_ROOT_PASSWORD=root_EMPTY_PASSWORD=yes and uncomment following args
     #  - MYSQL_ROOT_PASSWORD=root
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - TZ=Asia/Shanghai
     volumes:
       - ./sql/manual_schema.sql:/docker-entrypoint-initdb.d/manual_schema.sql
       - ./sql/slave-change.sql:/docker-entrypoint-initdb.d/slave-change.sql
@@ -68,11 +69,11 @@ services:
     ## launch mysql with password root
     ## you could access the mysql in container by following command :
     ## docker exec -it sharding-sphere-mysql mysql -uroot -proot
-    environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - TZ=Asia/Shanghai
     ## if you insist to use password in mysql, remove MYSQL_ALLOW_EMPTY_PASSWORD=yes and uncomment following args
     #  - MYSQL_ROOT_PASSWORD=root
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - TZ=Asia/Shanghai
     volumes:
       - ./sql/manual_schema.sql:/docker-entrypoint-initdb.d/manual_schema.sql
       - ./sql/slave-change.sql:/docker-entrypoint-initdb.d/slave-change.sql
