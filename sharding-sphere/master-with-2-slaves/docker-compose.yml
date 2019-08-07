@@ -85,3 +85,21 @@ services:
       "--symbolic-links=0",
       "--server-id=${SLAVE_SERVER_2_ID}"
     ]
+
+  zookeeper:
+    ## get more versions of zookeeper here : https://hub.docker.com/_/zookeeper?tab=tags
+    image: "zookeeper:3.4"
+    ports:
+      - "2181:2181"
+    container_name: sharding-sphere-zookeeper
+
+  ## access zkui by navigating localhost:9090
+  zkui:
+    depends_on:
+      - "zookeeper"
+    image: "maauso/zkui"
+    container_name: sharding-sphere-zkui
+    ports:
+      - "9090:9090"
+    environment:
+      - ZKLIST=sharding-sphere-zookeeper:2181
