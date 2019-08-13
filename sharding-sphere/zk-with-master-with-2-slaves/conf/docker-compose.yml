@@ -27,7 +27,7 @@ services:
       "--server-id=${MASTER_SERVER_ID}"
     ]
 
-  mysql-slave1:
+  mysql-slave-0:
     depends_on:
       - mysql-master
     ## mysql version, you could get more tags at here : https://hub.docker.com/_/mysql?tab=tags
@@ -35,7 +35,7 @@ services:
     ## host port is 3306, you could change to 33060 or any other port doesn't conflict MySQL on your OS
     ports:
       - "13307:3306"
-    container_name: sharding-sphere-mysql-slave1
+    container_name: sharding-sphere-mysql-slave-0
     ## launch mysql with password root
     ## you could access the mysql in container by following command :
     ## docker exec -it sharding-sphere-mysql mysql -uroot -proot
@@ -54,10 +54,10 @@ services:
       "--datadir=/var/lib/mysql",
       "--log-bin=/var/log/mysql/mysql-bin.index",
       "--symbolic-links=0",
-      "--server-id=${SLAVE_SERVER_1_ID}"
+      "--server-id=${SLAVE_SERVER_0_ID}"
     ]
 
-  mysql-slave2:
+  mysql-slave-1:
     depends_on:
       - mysql-master
     ## mysql version, you could get more tags at here : https://hub.docker.com/_/mysql?tab=tags
@@ -65,7 +65,7 @@ services:
     ## host port is 3306, you could change to 33060 or any other port doesn't conflict MySQL on your OS
     ports:
       - "13308:3306"
-    container_name: sharding-sphere-mysql-slave2
+    container_name: sharding-sphere-mysql-slave-1
     ## launch mysql with password root
     ## you could access the mysql in container by following command :
     ## docker exec -it sharding-sphere-mysql mysql -uroot -proot
@@ -83,7 +83,7 @@ services:
       "--datadir=/var/lib/mysql",
       "--log-bin=/var/log/mysql/mysql-bin.index",
       "--symbolic-links=0",
-      "--server-id=${SLAVE_SERVER_2_ID}"
+      "--server-id=${SLAVE_SERVER_1_ID}"
     ]
 
   zookeeper:
