@@ -17,7 +17,6 @@ services:
       - TZ=Asia/Shanghai
     volumes:
       - ../sql/manual_schema.sql:/docker-entrypoint-initdb.d/manual_schema.sql
-      - ../sql/master-grant.sql:/docker-entrypoint-initdb.d/master-grant.sql
     command: [
       "--pid-file=/var/run/mysqld/mysqld.pid",
       "--socket=/var/run/mysqld/mysqld.sock",
@@ -47,7 +46,6 @@ services:
       - TZ=Asia/Shanghai
     volumes:
       - ../sql/manual_schema.sql:/docker-entrypoint-initdb.d/manual_schema.sql
-      - ../sql/slave-1-change.sql:/docker-entrypoint-initdb.d/slave-1-change.sql
     command: [
       "--pid-file=/var/run/mysqld/mysqld.pid",
       "--socket=/var/run/mysqld/mysqld.sock",
@@ -76,7 +74,6 @@ services:
       - TZ=Asia/Shanghai
     volumes:
       - ../sql/manual_schema.sql:/docker-entrypoint-initdb.d/manual_schema.sql
-      - ../sql/slave-1-change.sql:/docker-entrypoint-initdb.d/slave-1-change.sql
     command: [
       "--pid-file=/var/run/mysqld/mysqld.pid",
       "--socket=/var/run/mysqld/mysqld.sock",
