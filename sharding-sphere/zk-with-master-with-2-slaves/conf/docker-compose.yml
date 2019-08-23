@@ -15,17 +15,6 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=${ROOT_USER_PASSWORD}
       - TZ=Asia/Shanghai
-    volumes:
-      - ../sql/manual_schema.sql:/docker-entrypoint-initdb.d/manual_schema.sql
-      - ../sql/master-grant.sql:/docker-entrypoint-initdb.d/master-grant.sql
-    command: [
-      "--pid-file=/var/run/mysqld/mysqld.pid",
-      "--socket=/var/run/mysqld/mysqld.sock",
-      "--datadir=/var/lib/mysql",
-      "--log-bin=/var/log/mysql/mysql-bin.index",
-      "--symbolic-links=0",
-      "--server-id=${MASTER_SERVER_ID}"
-    ]
 
   mysql-slave-0:
     depends_on:
@@ -45,17 +34,6 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=${ROOT_USER_PASSWORD}
       - TZ=Asia/Shanghai
-    volumes:
-      - ../sql/manual_schema.sql:/docker-entrypoint-initdb.d/manual_schema.sql
-      - ../sql/slave-change.sql:/docker-entrypoint-initdb.d/slave-change.sql
-    command: [
-      "--pid-file=/var/run/mysqld/mysqld.pid",
-      "--socket=/var/run/mysqld/mysqld.sock",
-      "--datadir=/var/lib/mysql",
-      "--log-bin=/var/log/mysql/mysql-bin.index",
-      "--symbolic-links=0",
-      "--server-id=${SLAVE_SERVER_0_ID}"
-    ]
 
   mysql-slave-1:
     depends_on:
@@ -74,17 +52,6 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=${ROOT_USER_PASSWORD}
       - TZ=Asia/Shanghai
-    volumes:
-      - ../sql/manual_schema.sql:/docker-entrypoint-initdb.d/manual_schema.sql
-      - ../sql/slave-change.sql:/docker-entrypoint-initdb.d/slave-change.sql
-    command: [
-      "--pid-file=/var/run/mysqld/mysqld.pid",
-      "--socket=/var/run/mysqld/mysqld.sock",
-      "--datadir=/var/lib/mysql",
-      "--log-bin=/var/log/mysql/mysql-bin.index",
-      "--symbolic-links=0",
-      "--server-id=${SLAVE_SERVER_1_ID}"
-    ]
 
   zookeeper:
     ## get more versions of zookeeper here : https://hub.docker.com/_/zookeeper?tab=tags
