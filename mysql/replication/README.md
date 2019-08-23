@@ -1,0 +1,1 @@
+1. 通过 run.sh 启动，通过 stop.sh 销毁 docker
