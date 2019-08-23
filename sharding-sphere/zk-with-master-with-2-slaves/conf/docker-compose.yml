@@ -15,10 +15,12 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=${ROOT_USER_PASSWORD}
       - TZ=Asia/Shanghai
+    volumes:
+      - ../sql/manual_schema.sql:/docker-entrypoint-initdb.d/manual_schema.sql
 
   mysql-slave-0:
     ## mysql version, you could get more tags at here : https://hub.docker.com/_/mysql?tab=tags
-    image: "mysql:5.7"
+    image: mysql:${TAG}
     ## host port is 3306, you could change to 33060 or any other port doesn't conflict MySQL on your OS
     ports:
       - "13307:3306"
@@ -32,10 +34,12 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=${ROOT_USER_PASSWORD}
       - TZ=Asia/Shanghai
+    volumes:
+      - ../sql/manual_schema.sql:/docker-entrypoint-initdb.d/manual_schema.sql
 
   mysql-slave-1:
     ## mysql version, you could get more tags at here : https://hub.docker.com/_/mysql?tab=tags
-    image: "mysql:5.7"
+    image: mysql:${TAG}
     ## host port is 3306, you could change to 33060 or any other port doesn't conflict MySQL on your OS
     ports:
       - "13308:3306"
@@ -48,6 +52,8 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=${ROOT_USER_PASSWORD}
       - TZ=Asia/Shanghai
+    volumes:
+      - ../sql/manual_schema.sql:/docker-entrypoint-initdb.d/manual_schema.sql
 
   zookeeper:
     ## get more versions of zookeeper here : https://hub.docker.com/_/zookeeper?tab=tags
