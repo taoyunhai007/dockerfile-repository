@@ -17,8 +17,6 @@ services:
       - TZ=Asia/Shanghai
 
   mysql-slave-0:
-    depends_on:
-      - mysql-master
     ## mysql version, you could get more tags at here : https://hub.docker.com/_/mysql?tab=tags
     image: "mysql:5.7"
     ## host port is 3306, you could change to 33060 or any other port doesn't conflict MySQL on your OS
@@ -36,8 +34,6 @@ services:
       - TZ=Asia/Shanghai
 
   mysql-slave-1:
-    depends_on:
-      - mysql-master
     ## mysql version, you could get more tags at here : https://hub.docker.com/_/mysql?tab=tags
     image: "mysql:5.7"
     ## host port is 3306, you could change to 33060 or any other port doesn't conflict MySQL on your OS
