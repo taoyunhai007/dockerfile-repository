@@ -1,5 +1,3 @@
 #!/usr/bin/env bash
 
-cd ../conf &&
-  docker-compose down &&
-  docker-compose up -d
+cd ../conf && docker-compose up -d
