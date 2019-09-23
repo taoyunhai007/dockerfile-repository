@@ -1,0 +1,37 @@
+version: '3'
+services:
+  postgresql:
+    ## postgresql version, you could get more tags at here : https://hub.docker.com/_/postgres
+    image: postgres:${TAG}
+    ## default host port is 3306, you could change to 13306 or any other port doesn't conflict MySQL on your OS
+    ports:
+      - "13306:3306"
+    container_name: sharding-sphere-postgresql
+    ## launch postgre sql with password root
+    ## you could access the mysql in container by following command :
+    ## docker exec -it sharding-sphere-postgresql mysql -uroot -proot
+    environment:
+      - POSTGRES_PASSWORD=${ROOT_USER_PASSWORD}
+      - TZ=Asia/Shanghai
+    ## if you insist to use password in mysql, remove MYSQL_ALLOW_EMPTY_PASSWORD=yes and uncomment following args
+    #  - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - ../sql/manual_schema.sql:/docker-entrypoint-initdb.d/manual_schema.sql
+
+  proxy:
+    ## get more versions of proxy here : https://hub.docker.com/r/apache/sharding-proxy/tags
+    image: "apache/sharding-proxy:4.0.0-RC2"
+    container_name: sharding-sphere-proxy
+    depends_on:
+      - postgresql
+    ports:
+      - "13308:3308"
+    links:
+      - "postgresql:postgresql"
+    volumes:
+      - ../conf/shardingsphere:/opt/sharding-proxy/conf
+    environment:
+      - PORT:3308
+      - JVM_OPTS="-Djava.awt.headless=true"
+    
+
