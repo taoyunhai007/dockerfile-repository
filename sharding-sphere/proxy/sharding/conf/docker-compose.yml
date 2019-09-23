@@ -2,16 +2,19 @@ version: '3'
 services:
   mysql:
     ## mysql version, you could get more tags at here : https://hub.docker.com/_/mysql?tab=tags
-    image: "mysql:5.7"
+    image: mysql:${TAG}
     ## host port is 3306, you could change to 33060 or any other port doesn't conflict MySQL on your OS
     ports:
-     - "13306:3306"
+      - "13306:3306"
     container_name: sharding-sphere-mysql
-    ## launch mysql without password
+    ## launch mysql with password root
     ## you could access the mysql in container by following command :
-    ## docker exec -it sharding-sphere-mysql mysql -uroot
+    ## docker exec -it sharding-sphere-mysql mysql -uroot -proot
+    ## if you insist to use password in mysql, remove MYSQL_ALLOW_EMPTY_PASSWORD=yes and uncomment following args
+    #  - MYSQL_ROOT_PASSWORD=root
     environment:
-     - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_ROOT_PASSWORD=${ROOT_USER_PASSWORD}
+      - TZ=Asia/Shanghai
     ## if you insist to use password in mysql, remove MYSQL_ALLOW_EMPTY_PASSWORD=yes and uncomment following args
     #  - MYSQL_ROOT_PASSWORD=root
     volumes:
@@ -22,13 +25,13 @@ services:
     image: "apache/sharding-proxy:4.0.0-RC2"
     container_name: sharding-sphere-proxy
     depends_on:
-     - mysql
+      - mysql
     ports:
-     - "13308:3308"
+      - "13308:3308"
     links:
-     - "mysql:mysql"
+      - "mysql:mysql"
     volumes:
-     - ../conf/shardingsphere:/opt/sharding-proxy/conf
+      - ../conf/shardingsphere:/opt/sharding-proxy/conf
     environment:
       - PORT:3308
       - JVM_OPTS="-Djava.awt.headless=true"
