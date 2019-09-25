@@ -3,7 +3,7 @@ services:
   mysql:
     ## mysql version, you could get more tags at here : https://hub.docker.com/_/mysql?tab=tags
     image: "mysql:5.7"
-    ## host port is 3306, you could change to 33060 or any other port doesn't conflict MySQL on your OS
+    ## default host port is 3306, you can change to any other port doesn't conflict MySQL on your OS
     ports:
      - "13306:3306"
     container_name: sharding-sphere-mysql
