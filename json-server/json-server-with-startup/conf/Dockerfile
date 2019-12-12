@@ -14,6 +14,6 @@ WORKDIR /data
 VOLUME /data
 
 EXPOSE 80
-ADD run.sh /run.sh
+ADD ../../json-server-with-startup/conf/run.sh /run.sh
 ENTRYPOINT ["bash", "/run.sh"]
 
