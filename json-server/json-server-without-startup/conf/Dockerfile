@@ -1,13 +1,12 @@
-FROM node:13-alpine
+FROM node:latest
 MAINTAINER Nianjun Sun <kane.sun@outlook.com>
 
-RUN npm install -g --production json-server && rm -rf /root/.npm /usr/lib/node_modules/npm
+RUN npm install -g json-server
 
 WORKDIR /data
 VOLUME /data
 
-EXPOSE 80
+EXPOSE 3000
 ENTRYPOINT ["json-server", "--host", "0.0.0.0"]
-CMD ["--help"]
-
+CMD []
 
