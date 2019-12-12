@@ -1,0 +1,1 @@
+docker run -d --rm -p 18080:3000 -v $(pwd):/data/ taojintianxia/json-server db.json --routes routes.json

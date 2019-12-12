@@ -2,7 +2,7 @@
 
 args="$@"
 
-args="$@ -p 80"
+args="$@ "
 
 file=/data/db.json
 if [ -f $file ]; then
