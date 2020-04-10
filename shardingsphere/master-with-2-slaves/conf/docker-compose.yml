@@ -2,7 +2,7 @@ version: '3'
 services:
   mysql-master:
     ## mysql version, you could get more tags at here : https://hub.docker.com/_/mysql?tab=tags
-    image: mysql:${TAG}
+    image: mysql:${MYSQL_VERSION}
     ## host port is 3306, you could change to 33060 or any other port doesn't conflict MySQL on your OS
     ports:
       - "13306:3306"
@@ -21,7 +21,7 @@ services:
 
   mysql-slave-0:
     ## mysql version, you could get more tags at here : https://hub.docker.com/_/mysql?tab=tags
-    image: mysql:${TAG}
+    image: mysql:${MYSQL_VERSION}
     ## host port is 3306, you could change to 33060 or any other port doesn't conflict MySQL on your OS
     ports:
       - "13307:3306"
@@ -41,7 +41,7 @@ services:
 
   mysql-slave-1:
     ## mysql version, you could get more tags at here : https://hub.docker.com/_/mysql?tab=tags
-    image: mysql:${TAG}
+    image: mysql:${MYSQL_VERSION}
     ## host port is 3306, you could change to 33060 or any other port doesn't conflict MySQL on your OS
     ports:
       - "13308:3306"
