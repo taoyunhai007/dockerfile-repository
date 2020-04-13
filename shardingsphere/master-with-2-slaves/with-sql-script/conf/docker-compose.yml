@@ -7,6 +7,14 @@ services:
     ports:
       - "13306:3306"
     container_name: shardingsphere-mysql-master
+    command: [
+      "--log-bin=mysql-bin",
+      "--server-id=${MASTER_SERVER_ID}",
+      "--character-set-server=utf8mb4",
+      "--collation-server=utf8mb4_unicode_ci",
+      "--innodb_flush_log_at_trx_commit=1",
+      "--sync_binlog=1"
+    ]
     ## launch mysql with password root
     ## you could access the mysql in container by following command :
     ## docker exec -it shardingsphere-mysql mysql -uroot -proot
@@ -16,6 +24,7 @@ services:
       - MYSQL_ROOT_PASSWORD=${ROOT_USER_PASSWORD}
       - TZ=Asia/Shanghai
     volumes:
+      - ../resources/slave-init.sql:/docker-entrypoint-initdb.d/slave-init.sql
       - ../../resources/1.sql_init.sql:/docker-entrypoint-initdb.d/1.sql_init.sql
       - ../../resources/2.data_init.sql:/docker-entrypoint-initdb.d/2.data_init.sql
 
@@ -26,6 +35,14 @@ services:
     ports:
       - "13307:3306"
     container_name: shardingsphere-mysql-slave-0
+    command: [
+      "--log-bin=mysql-bin",
+      "--server-id=${SLAVE_SERVER_0_ID}",
+      "--character-set-server=utf8mb4",
+      "--collation-server=utf8mb4_unicode_ci",
+      "--innodb_flush_log_at_trx_commit=0",
+      "--sync_binlog=0"
+    ]
     ## launch mysql with password root
     ## you could access the mysql in container by following command :
     ## docker exec -it shardingsphere-mysql mysql -uroot -proot
@@ -36,6 +53,7 @@ services:
       - MYSQL_ROOT_PASSWORD=${ROOT_USER_PASSWORD}
       - TZ=Asia/Shanghai
     volumes:
+      - ../resources/slave-init.sql:/docker-entrypoint-initdb.d/slave-init.sql
       - ../../resources/1.sql_init.sql:/docker-entrypoint-initdb.d/1.sql_init.sql
       - ../../resources/2.data_init.sql:/docker-entrypoint-initdb.d/2.data_init.sql
 
@@ -46,6 +64,14 @@ services:
     ports:
       - "13308:3306"
     container_name: shardingsphere-mysql-slave-1
+    command: [
+      "--log-bin=mysql-bin",
+      "--server-id=${SLAVE_SERVER_0_ID}",
+      "--character-set-server=utf8mb4",
+      "--collation-server=utf8mb4_unicode_ci",
+      "--innodb_flush_log_at_trx_commit=0",
+      "--sync_binlog=0"
+    ]
     ## launch mysql with password root
     ## you could access the mysql in container by following command :
     ## docker exec -it shardingsphere-mysql mysql -uroot -proot
@@ -55,5 +81,6 @@ services:
       - MYSQL_ROOT_PASSWORD=${ROOT_USER_PASSWORD}
       - TZ=Asia/Shanghai
     volumes:
+      - ../resources/slave-init.sql:/docker-entrypoint-initdb.d/slave-init.sql
       - ../../resources/1.sql_init.sql:/docker-entrypoint-initdb.d/1.sql_init.sql
       - ../../resources/2.data_init.sql:/docker-entrypoint-initdb.d/2.data_init.sql
