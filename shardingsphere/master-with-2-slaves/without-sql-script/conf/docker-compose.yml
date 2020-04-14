@@ -24,6 +24,7 @@ services:
       - MYSQL_ROOT_PASSWORD=${ROOT_USER_PASSWORD}
       - TZ=Asia/Shanghai
     volumes:
+      - ../resources/database-init.sql.sql:/docker-entrypoint-initdb.d/database-init.sql
       - ../resources/master-init.sql:/docker-entrypoint-initdb.d/master-init.sql
 
   mysql-slave-0:
@@ -51,6 +52,7 @@ services:
       - MYSQL_ROOT_PASSWORD=${ROOT_USER_PASSWORD}
       - TZ=Asia/Shanghai
     volumes:
+      - ../resources/database-init.sql.sql:/docker-entrypoint-initdb.d/database-init.sql
       - ../resources/slave-init.sql:/docker-entrypoint-initdb.d/slave-init.sql
 
   mysql-slave-1:
@@ -77,4 +79,5 @@ services:
       - MYSQL_ROOT_PASSWORD=${ROOT_USER_PASSWORD}
       - TZ=Asia/Shanghai
     volumes:
+      - ../resources/database-init.sql.sql:/docker-entrypoint-initdb.d/database-init.sql
       - ../resources/slave-init.sql:/docker-entrypoint-initdb.d/slave-init.sql
