@@ -24,9 +24,8 @@ services:
       - MYSQL_ROOT_PASSWORD=${ROOT_USER_PASSWORD}
       - TZ=Asia/Shanghai
     volumes:
-      - ../resources/slave-init.sql:/docker-entrypoint-initdb.d/slave-init.sql
-      - ../../resources/1.sql_init.sql:/docker-entrypoint-initdb.d/1.sql_init.sql
-      - ../../resources/2.data_init.sql:/docker-entrypoint-initdb.d/2.data_init.sql
+      - ../resources/database-init.sql:/docker-entrypoint-initdb.d/database-init.sql
+      - ../resources/master-init.sql:/docker-entrypoint-initdb.d/master-init.sql
 
   mysql-slave-0:
     ## mysql version, you could get more tags at here : https://hub.docker.com/_/mysql?tab=tags
@@ -54,8 +53,6 @@ services:
       - TZ=Asia/Shanghai
     volumes:
       - ../resources/slave-init.sql:/docker-entrypoint-initdb.d/slave-init.sql
-      - ../../resources/1.sql_init.sql:/docker-entrypoint-initdb.d/1.sql_init.sql
-      - ../../resources/2.data_init.sql:/docker-entrypoint-initdb.d/2.data_init.sql
 
   mysql-slave-1:
     ## mysql version, you could get more tags at here : https://hub.docker.com/_/mysql?tab=tags
@@ -66,7 +63,7 @@ services:
     container_name: shardingsphere-mysql-slave-1
     command: [
       "--log-bin=mysql-bin",
-      "--server-id=${SLAVE_SERVER_0_ID}",
+      "--server-id=${SLAVE_SERVER_1_ID}",
       "--character-set-server=utf8mb4",
       "--collation-server=utf8mb4_unicode_ci",
       "--innodb_flush_log_at_trx_commit=0",
@@ -82,5 +79,3 @@ services:
       - TZ=Asia/Shanghai
     volumes:
       - ../resources/slave-init.sql:/docker-entrypoint-initdb.d/slave-init.sql
-      - ../../resources/1.sql_init.sql:/docker-entrypoint-initdb.d/1.sql_init.sql
-      - ../../resources/2.data_init.sql:/docker-entrypoint-initdb.d/2.data_init.sql
